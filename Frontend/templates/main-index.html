@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "main-header.html" %}
+    {% block header %}
+    {% endblock header %}
+</head>
+
+
+<body class="  ">
+
+    <div class="wrapper">
+       
+        {% include 'preloader.html' %}
+        {% include 'side-navbar.html' %}
+        {% include 'top-navbar.html' %}
+        <div class="content-page">
+                
+                {% block content %}
+                
+                {% endblock content %}
+
+          </div>
+    </div>
+
+    <footer class="iq-footer">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6 text-right">
+                            <span class="mr-1"><script>document.write(new Date().getFullYear())</script>©</span> <a href="#/" class="" target="_blank">Ecommerce</a>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer> 
+
+
+    {% include "common-modal.html" %}
+    {% include "main-footer.html" %}
+    <!-- Custom JavaScript -->
+    <script src="{% static 'js/custom.js' %}"></script>
+    {% block footer %}
+    {% endblock footer %}
+   
+</body>
+</html>

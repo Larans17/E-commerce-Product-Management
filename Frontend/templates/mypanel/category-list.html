@@ -1,0 +1,70 @@
+{% extends 'main-index.html' %} 
+{% load static %} 
+{% block header %} 
+{% endblock header %} 
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-9 col-lg-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <div class="header-title">
+                    <h4 class="card-title" id="titleName">Add Category</h4>
+                </div>
+            </div>
+            <div class="card-body" id="categoryDiv">
+              <form method="POST" action="#" id="category_form">
+                {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12">                      
+                            <div class="form-group">
+                                <label>Category :</label>
+                                <input type="text" class="form-control" id="txtcategory" name="txtcategory" data-name="Category" validate placeholder="Enter Category Name">
+                                <div class="help-block with-errors" id="error_cate"></div>
+                            </div>
+                        </div>  
+                                                        
+                    </div>   
+                    <input type="hidden" id="hd_cate_id" name="hd_cate_id">                         
+                    <button type="button" id="btnSave" onclick="formSubmit('category_form')" class="btn btn-primary mr-2">Add Category</button>
+                    <button type="button" class="btn btn-danger" onclick="clearForm('category_form','Category')">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% comment %} -------------- Category List -------------------------- {% endcomment %}
+<div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between">
+          <div class="header-title">
+            <h4 class="card-title">Category List</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table id="tblCategoryList" class="table data-tables table-striped">
+              <thead>
+                <tr class="ligth">
+                  <th>S.No</th>
+                  <th>Category</th>
+                  <th>Last updated on</th>
+                  <th style="min-width: 100px">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page end  -->
+</div>
+{% endblock %} 
+{% block footer %}
+<script src="{% static 'js/mypanel/category-list.js' %}"></script> 
+{% endblock footer %}

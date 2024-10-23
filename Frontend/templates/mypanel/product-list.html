@@ -1,0 +1,102 @@
+{% extends 'main-index.html' %} 
+{% load static %} 
+{% block header %} 
+{% endblock header %} 
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <div class="header-title">
+                    <h4 class="card-title" id="titleName">Add Product</h4>
+                </div>
+            </div>
+            <div class="card-body" id="productDiv">
+              <form method="POST" action="#" id="product_form">
+                {% csrf_token %}
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-11">
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label>Category :</label>
+                                    <select class="form-control mb-3" id="ddlcategory" name="ddlcategory" data-name="Category" validate>
+                                      <option value="0">Select</option>
+                                      {% for cate in category %}
+                                      <option value="{{cate.id}}">{{cate.category_name}}</option>
+                                      {% endfor %}
+                                   </select>
+                                 </div>
+                                <div class="form-group col-md-4">
+                                    <label>Product Name :</label>
+                                    <input type="text" class="form-control" id="txt_product_name" name="txt_product_name" data-name="Product Name" validate placeholder="Enter Product Name">
+                                    <div class="help-block with-errors" id="error_product_name"></div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Price :</label>
+                                    <input type="text" class="form-control" id="txt_price" name="txt_price" data-name="Price" validate placeholder="Enter Price"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                    <div class="help-block with-errors" id="error_price"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Description :</label>
+                                    <textarea type="text" class="form-control" id="txtdesc" name="txtdesc" data-name="Description" placeholder="Write here..."></textarea>
+                                    
+                                </div>
+                            </div>
+                              </div>
+                        </div>                              
+                    </div>                            
+                    <input type="hidden" id="hd_product_id" name="hd_product_id">                      
+                    <button type="button" id="btnSave" onclick="formSubmit('product_form')" class="btn btn-primary mr-2">Add product</button>
+                    <button type="button" class="btn btn-danger" onclick="clearForm('product_form','product')">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+
+{% comment %} -------------- product List -------------------------- {% endcomment %}
+<div class="row">
+    <div class="col-sm-12" style="font-size: smaller;">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between">
+          <div class="header-title">
+            <h4 class="card-title">Product List</h4>
+          </div>
+          
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table id="tblProductList" class="table data-tables table-striped">
+              <thead>
+                  <th>S.No</th>
+                  <th>Date</th>
+                  <th>Category</th>
+                  <th>Product Name</th>
+                  <th>Price</th>
+                  <th>Description</th>
+                  <th style="min-width: 100px">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page end  -->
+</div>
+
+
+{% endblock %} 
+{% block footer %}
+<script src="{% static 'js/mypanel/product-list.js' %}"></script>
+{% endblock footer %}

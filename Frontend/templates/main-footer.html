@@ -1,0 +1,47 @@
+{% load static %}
+<!-- Backend Bundle JavaScript -->
+<script src="{% static 'js/backend-bundle.min.js' %}"></script>
+<script src="{% static 'lib/select2/js/select2.full.min.js' %}"></script>
+<script src="{% static 'lib/sweetalert2/sweetalert2.min.js' %}"></script>
+    
+<!-- Table Treeview JavaScript -->
+<script src="{% static 'js/table-treeview.js' %}"></script>
+
+
+<!-- app JavaScript -->
+{% comment %} <script src="{% static 'js/app.js' %}"></script> {% endcomment %}
+
+
+
+
+<script>
+    function showMsg(msg, type, timer = 3000) {
+      const Toast = Swal.mixin({
+        customClass: {
+          popup: 'swal2-' + (type == 1 ? 'success' : 'error'),
+          icon: 'swal2-icon-hide',
+        },
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: timer,
+        timerProgressBar: true,
+        cancelButton:false,
+      });
+  
+      Toast.fire({
+        imageUrl: (type == 1 ? "{% static 'images/icon/ico_success_toast.svg' %}" : "{% static '/images/icon/ico_error_toast.svg' %}"),
+        title: msg
+      })
+    }
+  
+</script>
+
+{% if messages %}
+{% for message in messages %}
+<script>
+    var errorcode = '{{message.tags}}' == 'success' ? 1 : 2;
+    showMsg('{{message}}', errorcode);
+</script>
+{% endfor %}
+{% endif %}

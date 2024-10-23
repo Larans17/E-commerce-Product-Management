@@ -1,0 +1,43 @@
+{% extends 'main-index.html' %}
+{% load static %}
+{% block header %}
+{% endblock header %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title" id="titleName">Product List</h4>
+                    </div>
+                    <div class="iq-search-bar device-search">
+                        <form action="#" class="searchbox">
+                            <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                            <input type="text" class="text search-input" id="searchkey" placeholder="Search here...">
+                        </form>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <section class="col-lg-9 col-md-12" id="result_block">
+                        <div class="row g-4 row-cols-xl-1 row-cols-lg-1 mt-2" id="product_result_block"></div>
+                        <div class="row mt-8" id="searchbar_empty_block"></div>
+                        <div class="row mt-8" id="product_footer_block">
+                            <div class="col">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination" id="pagination">
+                                        <!-- Pagination will be dynamically populated here -->
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block footer %}
+<script src="{% static 'js/mypanel/product.js' %}"></script>
+{% endblock footer %}
